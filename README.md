@@ -1,6 +1,18 @@
-# Know Your Leader Kenya
+# Know Your Leader 🇰🇪
 
-An evidence-first civic data website. It imports National Assembly member records from the official Parliament of Kenya members page, stores a local cache, supports search, leader profiles, comparisons, API access, and manual refresh.
+A modern evidence-first civic information platform for Kenya.
+
+## Scope
+- 47 counties
+- Six elective positions: President, Governor, Senator, Woman Representative, Member of National Assembly and MCA
+- Current office holders and a separate pathway for verified aspirant/candidate records
+- Search, county explorer, position filters, profiles and comparison
+- Source/evidence fields so claims can be traced
+
+## Current data collector
+The first live collector imports National Assembly member records from the official Parliament of Kenya members page. It intentionally does not invent scores for performance, activity, promises or finance.
+
+The other position/candidate collectors should be added from official IEBC, county and government sources before those records are presented as verified.
 
 ## Run locally
 ```bash
@@ -10,9 +22,7 @@ python app.py
 Open http://127.0.0.1:5000
 
 ## Render
-If this repository is the project root:
-- Build: `pip install -r requirements.txt`
-- Start: `gunicorn app:app`
+Build: `pip install -r requirements.txt`
+Start: `gunicorn app:app`
 
-## Important
-The current release intentionally does **not** invent performance, promise, budget, or activity scores. Those fields remain zero until verified data collectors are added. Evidence is 100 only because the leader record came from the official Parliament page. Expand collectors using official Parliament, IEBC, government/county records and published documents. Review source terms and rate limits before automated collection.
+For production, move the database to persistent PostgreSQL and schedule official-source refresh jobs rather than relying on SQLite on an ephemeral web filesystem.
